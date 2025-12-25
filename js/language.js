@@ -737,8 +737,13 @@ function applyManualTranslations() {
             if (value) value.textContent = t.bonuses.card1Value;
             if (h3) h3.textContent = t.bonuses.card1Title;
             if (p) p.textContent = t.bonuses.card1Text;
-            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
-                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            if (toggle) {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    toggle.innerHTML = `${t.bonuses.showLess} <i class="fas fa-chevron-up"></i>`;
+                } else {
+                    toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+                }
             }
         }
         if (cards[1]) {
@@ -749,8 +754,13 @@ function applyManualTranslations() {
             if (value) value.textContent = t.bonuses.card2Value;
             if (h3) h3.textContent = t.bonuses.card2Title;
             if (p) p.textContent = t.bonuses.card2Text;
-            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
-                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            if (toggle) {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    toggle.innerHTML = `${t.bonuses.showLess} <i class="fas fa-chevron-up"></i>`;
+                } else {
+                    toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+                }
             }
         }
         if (cards[2]) {
@@ -761,8 +771,13 @@ function applyManualTranslations() {
             if (value) value.textContent = t.bonuses.card3Value;
             if (h3) h3.textContent = t.bonuses.card3Title;
             if (p) p.textContent = t.bonuses.card3Text;
-            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
-                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            if (toggle) {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    toggle.innerHTML = `${t.bonuses.showLess} <i class="fas fa-chevron-up"></i>`;
+                } else {
+                    toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+                }
             }
         }
         if (cards[3]) {
@@ -773,8 +788,13 @@ function applyManualTranslations() {
             if (value) value.textContent = t.bonuses.card4Value;
             if (h3) h3.textContent = t.bonuses.card4Title;
             if (p) p.textContent = t.bonuses.card4Text;
-            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
-                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            if (toggle) {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    toggle.innerHTML = `${t.bonuses.showLess} <i class="fas fa-chevron-up"></i>`;
+                } else {
+                    toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+                }
             }
         }
         
@@ -787,7 +807,7 @@ function applyManualTranslations() {
             if (title) title.textContent = t.bonuses.deadlineTitle;
             if (text) text.textContent = t.bonuses.deadlineText;
             if (button) {
-                button.innerHTML = `<i class="fab fa-whatsapp"></i>${t.bonuses.claimButton}`;
+                button.innerHTML = `<i class="fab fa-whatsapp"></i> ${t.bonuses.claimButton}`;
             }
         }
     }
