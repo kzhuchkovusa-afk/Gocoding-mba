@@ -402,11 +402,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const collapseContent = stepCard.querySelector('.step-collapse');
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             
+            // Get translated texts
+            const seeDetailsText = window.getTranslation ? window.getTranslation('phases.seeDetails') : 'See Details';
+            const hideDetailsText = window.getTranslation ? window.getTranslation('phases.hideDetails') : 'Hide Details';
+            
             // Close all other accordions
             accordionToggles.forEach(otherToggle => {
                 if (otherToggle !== this) {
                     otherToggle.setAttribute('aria-expanded', 'false');
-                    otherToggle.querySelector('span').textContent = 'See Details';
+                    otherToggle.querySelector('span').textContent = seeDetailsText;
                     const otherCollapse = otherToggle.closest('.step-card').querySelector('.step-collapse');
                     otherCollapse.classList.remove('active');
                 }
@@ -415,11 +419,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Toggle current accordion
             if (isExpanded) {
                 this.setAttribute('aria-expanded', 'false');
-                this.querySelector('span').textContent = 'See Details';
+                this.querySelector('span').textContent = seeDetailsText;
                 collapseContent.classList.remove('active');
             } else {
                 this.setAttribute('aria-expanded', 'true');
-                this.querySelector('span').textContent = 'Hide Details';
+                this.querySelector('span').textContent = hideDetailsText;
                 collapseContent.classList.add('active');
             }
         });
@@ -434,14 +438,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const collapseContent = benefitCard.querySelector('.benefit-collapse');
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             
+            // Get translated texts
+            const seeDetailsText = window.getTranslation ? window.getTranslation('phases.seeDetails') : 'See Details';
+            const hideDetailsText = window.getTranslation ? window.getTranslation('phases.hideDetails') : 'Hide Details';
+            
             // Toggle current benefit card
             if (isExpanded) {
                 this.setAttribute('aria-expanded', 'false');
-                this.querySelector('span').textContent = 'See Details';
+                this.querySelector('span').textContent = seeDetailsText;
                 collapseContent.classList.remove('active');
             } else {
                 this.setAttribute('aria-expanded', 'true');
-                this.querySelector('span').textContent = 'Hide Details';
+                this.querySelector('span').textContent = hideDetailsText;
                 collapseContent.classList.add('active');
             }
         });
@@ -456,14 +464,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const collapseContent = bonusCard.querySelector('.bonus-collapse');
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             
+            // Get translated texts
+            const learnMoreText = window.getTranslation ? window.getTranslation('bonuses.learnMore') : 'Learn More';
+            const showLessText = window.getTranslation ? window.getTranslation('bonuses.showLess') : 'Show Less';
+            
             // Toggle current bonus card
             if (isExpanded) {
                 this.setAttribute('aria-expanded', 'false');
-                this.innerHTML = 'Learn More <i class="fas fa-chevron-down"></i>';
+                this.innerHTML = `${learnMoreText} <i class="fas fa-chevron-down"></i>`;
                 collapseContent.classList.remove('active');
             } else {
                 this.setAttribute('aria-expanded', 'true');
-                this.innerHTML = 'Show Less <i class="fas fa-chevron-up"></i>';
+                this.innerHTML = `${showLessText} <i class="fas fa-chevron-up"></i>`;
                 collapseContent.classList.add('active');
             }
         });

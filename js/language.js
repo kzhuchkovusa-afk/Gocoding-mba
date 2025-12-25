@@ -572,6 +572,289 @@ function applyManualTranslations() {
         const copyright = footer.querySelector('.footer-bottom p');
         if (copyright) copyright.textContent = t.footer.copyright;
     }
+    
+    // Phases Section (9-Month Journey)
+    const phasesSection = document.querySelector('.steps-section');
+    if (phasesSection && t.phases) {
+        const badge = phasesSection.querySelector('.section-badge');
+        const title = phasesSection.querySelector('.section-header h2');
+        const subtitle = phasesSection.querySelector('.section-header > p');
+        if (badge) badge.textContent = t.phases.badge;
+        if (title) title.textContent = t.phases.title;
+        if (subtitle) subtitle.textContent = t.phases.subtitle;
+        
+        const phases = phasesSection.querySelectorAll('.step-card');
+        
+        // Phase 1
+        if (phases[0] && t.phases) {
+            const h3 = phases[0].querySelector('h3');
+            const subtitle = phases[0].querySelector('.step-subtitle');
+            const toggleBtn = phases[0].querySelector('.step-toggle span');
+            const learnP = phases[0].querySelector('.step-description > p');
+            const outcome = phases[0].querySelector('.step-result');
+            const tools = phases[0].querySelector('.step-tools');
+            
+            if (h3) h3.textContent = t.phases.phase1Title;
+            if (subtitle) subtitle.textContent = t.phases.phase1Subtitle;
+            if (toggleBtn) toggleBtn.textContent = t.phases.seeDetails;
+            if (learnP) learnP.innerHTML = `<strong>${t.phases.whatTheyLearn}</strong> ${t.phases.phase1Learn}`;
+            if (outcome) outcome.innerHTML = `<strong>${t.phases.keyOutcome}</strong> ${t.phases.phase1Outcome}`;
+            if (tools) tools.innerHTML = `<strong>${t.phases.tools}</strong> ${t.phases.phase1Tools}`;
+        }
+        
+        // Phase 2
+        if (phases[1] && t.phases) {
+            const h3 = phases[1].querySelector('h3');
+            const subtitle = phases[1].querySelector('.step-subtitle');
+            const toggleBtn = phases[1].querySelector('.step-toggle span');
+            const learnP = phases[1].querySelector('.step-description > p');
+            const outcome = phases[1].querySelector('.step-result');
+            const tools = phases[1].querySelector('.step-tools');
+            
+            if (h3) h3.textContent = t.phases.phase2Title;
+            if (subtitle) subtitle.textContent = t.phases.phase2Subtitle;
+            if (toggleBtn) toggleBtn.textContent = t.phases.seeDetails;
+            if (learnP) learnP.innerHTML = `<strong>${t.phases.whatTheyLearn}</strong> ${t.phases.phase2Learn}`;
+            if (outcome) outcome.innerHTML = `<strong>${t.phases.keyOutcome}</strong> ${t.phases.phase2Outcome}`;
+            if (tools) tools.innerHTML = `<strong>${t.phases.tools}</strong> ${t.phases.phase2Tools}`;
+        }
+        
+        // Phase 3
+        if (phases[2] && t.phases) {
+            const h3 = phases[2].querySelector('h3');
+            const subtitle = phases[2].querySelector('.step-subtitle');
+            const toggleBtn = phases[2].querySelector('.step-toggle span');
+            const learnP = phases[2].querySelector('.step-description > p');
+            const outcome = phases[2].querySelector('.step-result');
+            const tools = phases[2].querySelector('.step-tools');
+            
+            if (h3) h3.textContent = t.phases.phase3Title;
+            if (subtitle) subtitle.textContent = t.phases.phase3Subtitle;
+            if (toggleBtn) toggleBtn.textContent = t.phases.seeDetails;
+            if (learnP) learnP.innerHTML = `<strong>${t.phases.whatTheyLearn}</strong> ${t.phases.phase3Learn}`;
+            if (outcome) outcome.innerHTML = `<strong>${t.phases.keyOutcome}</strong> ${t.phases.phase3Outcome}`;
+            if (tools) tools.innerHTML = `<strong>${t.phases.tools}</strong> ${t.phases.phase3Tools}`;
+        }
+        
+        // Phase 4
+        if (phases[3] && t.phases) {
+            const h3 = phases[3].querySelector('h3');
+            const subtitle = phases[3].querySelector('.step-subtitle');
+            const toggleBtn = phases[3].querySelector('.step-toggle span');
+            const learnP = phases[3].querySelector('.step-description > p');
+            const outcome = phases[3].querySelector('.step-result');
+            const finalP = phases[3].querySelectorAll('.step-description > p')[1];
+            
+            if (h3) h3.textContent = t.phases.phase4Title;
+            if (subtitle) subtitle.textContent = t.phases.phase4Subtitle;
+            if (toggleBtn) toggleBtn.textContent = t.phases.seeDetails;
+            if (learnP) learnP.innerHTML = `<strong>${t.phases.whatTheyLearn}</strong> ${t.phases.phase4Learn}`;
+            if (outcome) outcome.innerHTML = `<strong>${t.phases.keyOutcome}</strong> ${t.phases.phase4Outcome}`;
+            if (finalP) finalP.textContent = t.phases.phase4Final;
+        }
+    }
+    
+    // Benefits Details Section
+    const benefitsDetSection = document.querySelector('.benefits-section');
+    if (benefitsDetSection && t.benefitsDetails) {
+        const cards = benefitsDetSection.querySelectorAll('.benefit-card');
+        
+        if (cards[0]) {
+            const h3 = cards[0].querySelector('h3');
+            const introP = cards[0].querySelector('.benefit-collapse > p');
+            const items = cards[0].querySelectorAll('.benefit-collapse li');
+            if (h3) h3.textContent = t.benefitsDetails.card1Title;
+            if (introP) introP.textContent = t.benefitsDetails.card1Intro;
+            if (items[0]) items[0].textContent = t.benefitsDetails.card1Item1;
+            if (items[1]) items[1].textContent = t.benefitsDetails.card1Item2;
+            if (items[2]) items[2].textContent = t.benefitsDetails.card1Item3;
+            if (items[3]) items[3].textContent = t.benefitsDetails.card1Item4;
+        }
+        
+        if (cards[1]) {
+            const h3 = cards[1].querySelector('h3');
+            const p = cards[1].querySelector('.benefit-collapse > p');
+            if (h3) h3.textContent = t.benefitsDetails.card2Title;
+            if (p) p.textContent = t.benefitsDetails.card2Text;
+        }
+        
+        if (cards[2]) {
+            const h3 = cards[2].querySelector('h3');
+            const p = cards[2].querySelector('.benefit-collapse > p');
+            if (h3) h3.textContent = t.benefitsDetails.card3Title;
+            if (p) p.textContent = t.benefitsDetails.card3Text;
+        }
+        
+        if (cards[3]) {
+            const h3 = cards[3].querySelector('h3');
+            const p = cards[3].querySelector('.benefit-collapse > p');
+            if (h3) h3.textContent = t.benefitsDetails.card4Title;
+            if (p) p.textContent = t.benefitsDetails.card4Text;
+        }
+        
+        if (cards[4]) {
+            const h3 = cards[4].querySelector('h3');
+            const introP = cards[4].querySelector('.benefit-collapse > p');
+            const items = cards[4].querySelectorAll('.benefit-collapse li');
+            if (h3) h3.textContent = t.benefitsDetails.card5Title;
+            if (introP) introP.textContent = t.benefitsDetails.card5Intro;
+            if (items[0]) items[0].textContent = t.benefitsDetails.card5Item1;
+            if (items[1]) items[1].textContent = t.benefitsDetails.card5Item2;
+            if (items[2]) items[2].textContent = t.benefitsDetails.card5Item3;
+            if (items[3]) items[3].textContent = t.benefitsDetails.card5Item4;
+        }
+        
+        if (cards[5]) {
+            const h3 = cards[5].querySelector('h3');
+            const p = cards[5].querySelector('.benefit-collapse > p');
+            if (h3) h3.textContent = t.benefitsDetails.card6Title;
+            if (p) p.textContent = t.benefitsDetails.card6Text;
+        }
+        
+        // Translate benefit toggle buttons
+        const toggles = benefitsDetSection.querySelectorAll('.benefit-toggle span');
+        toggles.forEach(toggle => {
+            if (toggle.textContent.trim() === 'See Details') {
+                toggle.textContent = t.phases.seeDetails;
+            } else if (toggle.textContent.trim() === 'Hide Details') {
+                toggle.textContent = t.phases.hideDetails;
+            }
+        });
+    }
+    
+    // Bonuses Section - Update bonus toggles and values
+    const bonusSection = document.querySelector('.bonuses-section');
+    if (bonusSection && t.bonuses) {
+        const subtitle = bonusSection.querySelector('.section-subtitle');
+        if (subtitle) subtitle.textContent = t.bonuses.subtitle;
+        
+        const cards = bonusSection.querySelectorAll('.bonus-card');
+        if (cards[0]) {
+            const value = cards[0].querySelector('.bonus-value');
+            const h3 = cards[0].querySelector('h3');
+            const p = cards[0].querySelector('.bonus-collapse p');
+            const toggle = cards[0].querySelector('.bonus-toggle');
+            if (value) value.textContent = t.bonuses.card1Value;
+            if (h3) h3.textContent = t.bonuses.card1Title;
+            if (p) p.textContent = t.bonuses.card1Text;
+            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
+                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            }
+        }
+        if (cards[1]) {
+            const value = cards[1].querySelector('.bonus-value');
+            const h3 = cards[1].querySelector('h3');
+            const p = cards[1].querySelector('.bonus-collapse p');
+            const toggle = cards[1].querySelector('.bonus-toggle');
+            if (value) value.textContent = t.bonuses.card2Value;
+            if (h3) h3.textContent = t.bonuses.card2Title;
+            if (p) p.textContent = t.bonuses.card2Text;
+            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
+                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            }
+        }
+        if (cards[2]) {
+            const value = cards[2].querySelector('.bonus-value');
+            const h3 = cards[2].querySelector('h3');
+            const p = cards[2].querySelector('.bonus-collapse p');
+            const toggle = cards[2].querySelector('.bonus-toggle');
+            if (value) value.textContent = t.bonuses.card3Value;
+            if (h3) h3.textContent = t.bonuses.card3Title;
+            if (p) p.textContent = t.bonuses.card3Text;
+            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
+                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            }
+        }
+        if (cards[3]) {
+            const value = cards[3].querySelector('.bonus-value');
+            const h3 = cards[3].querySelector('h3');
+            const p = cards[3].querySelector('.bonus-collapse p');
+            const toggle = cards[3].querySelector('.bonus-toggle');
+            if (value) value.textContent = t.bonuses.card4Value;
+            if (h3) h3.textContent = t.bonuses.card4Title;
+            if (p) p.textContent = t.bonuses.card4Text;
+            if (toggle && toggle.getAttribute('aria-expanded') === 'false') {
+                toggle.innerHTML = `${t.bonuses.learnMore} <i class="fas fa-chevron-down"></i>`;
+            }
+        }
+        
+        // Bonus CTA section
+        const ctaBox = bonusSection.querySelector('.bonus-cta-box');
+        if (ctaBox && t.bonuses) {
+            const title = ctaBox.querySelector('h3');
+            const text = ctaBox.querySelector('p');
+            const button = ctaBox.querySelector('.btn');
+            if (title) title.textContent = t.bonuses.deadlineTitle;
+            if (text) text.textContent = t.bonuses.deadlineText;
+            if (button) {
+                button.innerHTML = `<i class="fab fa-whatsapp"></i>${t.bonuses.claimButton}`;
+            }
+        }
+    }
+    
+    // Schedule Section
+    const weeklySchedule = document.querySelector('.weekly-schedule-simple');
+    if (weeklySchedule && t.schedule) {
+        const title = weeklySchedule.parentElement.querySelector('h3');
+        const intro = weeklySchedule.parentElement.querySelector('p');
+        if (title) title.textContent = t.schedule.scheduleTitle;
+        if (intro) intro.textContent = t.schedule.scheduleIntro;
+        
+        const cards = weeklySchedule.querySelectorAll('.schedule-card');
+        if (cards[0]) {
+            cards[0].querySelector('h4').textContent = t.schedule.liveClass;
+            cards[0].querySelector('.time').textContent = t.schedule.liveClassTime;
+            cards[0].querySelector('.desc').textContent = t.schedule.liveClassDesc;
+        }
+        if (cards[1]) {
+            cards[1].querySelector('h4').textContent = t.schedule.projectWork;
+            cards[1].querySelector('.time').textContent = t.schedule.projectWorkTime;
+            cards[1].querySelector('.desc').textContent = t.schedule.projectWorkDesc;
+        }
+        if (cards[2]) {
+            cards[2].querySelector('h4').textContent = t.schedule.checkIns;
+            cards[2].querySelector('.time').textContent = t.schedule.checkInsTime;
+            cards[2].querySelector('.desc').textContent = t.schedule.checkInsDesc;
+        }
+        
+        const totalCard = weeklySchedule.querySelector('.schedule-total-card');
+        if (totalCard) {
+            totalCard.querySelector('.total-label').textContent = t.schedule.total;
+            totalCard.querySelector('.total-time').textContent = t.schedule.totalTime;
+            totalCard.querySelector('.total-desc').textContent = t.schedule.totalDesc;
+        }
+        
+        const note = weeklySchedule.nextElementSibling;
+        if (note && note.classList.contains('schedule-note')) {
+            note.textContent = t.schedule.parentNote;
+        }
+    }
+    
+    // Value Breakdown - What Average Student Gets
+    const avgStudent = document.querySelector('.breakdown-benefits');
+    if (avgStudent && t.valueBreakdown) {
+        const title = avgStudent.querySelector('h4');
+        if (title) title.textContent = t.valueBreakdown.averageStudentTitle;
+        
+        const items = avgStudent.querySelectorAll('.benefit-item div');
+        const itemTexts = [
+            t.valueBreakdown.item1,
+            t.valueBreakdown.item2,
+            t.valueBreakdown.item3,
+            t.valueBreakdown.item4,
+            t.valueBreakdown.item5,
+            t.valueBreakdown.item6
+        ];
+        
+        items.forEach((item, index) => {
+            if (itemTexts[index]) {
+                item.innerHTML = itemTexts[index];
+            }
+        });
+        
+        const note = avgStudent.querySelector('.benefits-note');
+        if (note) note.innerHTML = t.valueBreakdown.note;
+    }
 }
 
 // Update language button states
