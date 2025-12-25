@@ -424,6 +424,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Benefits Section Accordion Toggle
+    const benefitToggles = document.querySelectorAll('.benefit-toggle');
+    
+    benefitToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const benefitCard = this.closest('.benefit-card');
+            const collapseContent = benefitCard.querySelector('.benefit-collapse');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle current benefit card
+            if (isExpanded) {
+                this.setAttribute('aria-expanded', 'false');
+                this.querySelector('span').textContent = 'See Details';
+                collapseContent.classList.remove('active');
+            } else {
+                this.setAttribute('aria-expanded', 'true');
+                this.querySelector('span').textContent = 'Hide Details';
+                collapseContent.classList.add('active');
+            }
+        });
+    });
 
 });
 
