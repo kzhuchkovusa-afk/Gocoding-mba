@@ -269,4 +269,38 @@
     .location-info h4 {
         font-size: 1.25rem;
     }
+    
+    /* Bonuses Section Mobile */
+    .bonuses-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .bonus-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .bonus-icon {
+        font-size: 2.5rem;
+    }
+    
+    .bonus-card h3 {
+        font-size: 1.25rem;
+    }
+    
+    .bonus-cta-box {
+        padding: var(--spacing-lg);
+    }
+    
+    .bonus-cta-box h3 {
+        font-size: 1.5rem;
+    }
+    
+    .bonus-cta-box p {
+        font-size: 1rem;
+    }
+    
+    .bonus-warning {
+        font-size: 1rem;
+    }
 }
