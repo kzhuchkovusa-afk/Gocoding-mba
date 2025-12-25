@@ -1,0 +1,620 @@
+// ===========================
+// Language Switcher
+// ===========================
+
+let currentLang = localStorage.getItem('mba-language') || 'en';
+let translations = {};
+
+// Load translations
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch(`js/translations-${lang}.json`);
+        translations = await response.json();
+        applyTranslations();
+        updateLanguageButtons(lang);
+        currentLang = lang;
+        localStorage.setItem('mba-language', lang);
+    } catch (error) {
+        console.error('Error loading translations:', error);
+    }
+}
+
+// Apply translations to the page
+function applyTranslations() {
+    // Translate elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const keys = element.getAttribute('data-i18n').split('.');
+        let value = translations;
+        
+        for (const key of keys) {
+            value = value[key];
+            if (!value) break;
+        }
+        
+        if (value) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = value;
+            } else {
+                element.innerHTML = value;
+            }
+        }
+    });
+    
+    // Apply manual translations based on selectors
+    applyManualTranslations();
+    
+    // Update document language attribute
+    document.documentElement.lang = currentLang;
+}
+
+// Manual translations for elements without data-i18n
+function applyManualTranslations() {
+    const t = translations;
+    
+    // Hero Section
+    const heroSection = document.querySelector('.hero');
+    if (heroSection && t.hero) {
+        const heroBadge = heroSection.querySelector('.hero-badge span');
+        const heroTitle = heroSection.querySelector('.hero-title');
+        const heroSubtitles = heroSection.querySelectorAll('.hero-subtitle');
+        const heroCTA = heroSection.querySelector('.hero-cta .btn span');
+        
+        if (heroBadge) heroBadge.textContent = t.hero.badge;
+        if (heroTitle) heroTitle.innerHTML = t.hero.title;
+        if (heroSubtitles[0]) heroSubtitles[0].textContent = t.hero.subtitle1;
+        if (heroSubtitles[1]) heroSubtitles[1].textContent = t.hero.subtitle2;
+        if (heroCTA) heroCTA.textContent = t.hero.cta;
+        
+        // Stats
+        const stats = heroSection.querySelectorAll('.stat-item');
+        if (stats[0]) {
+            const number = stats[0].querySelector('.stat-number');
+            const label = stats[0].querySelector('.stat-label');
+            if (number) number.textContent = t.hero.stat1;
+            if (label) label.textContent = t.hero.stat1Label;
+        }
+        if (stats[1]) {
+            const number = stats[1].querySelector('.stat-number');
+            const label = stats[1].querySelector('.stat-label');
+            if (number) number.textContent = t.hero.stat2;
+            if (label) label.textContent = t.hero.stat2Label;
+        }
+        if (stats[2]) {
+            const number = stats[2].querySelector('.stat-number');
+            const label = stats[2].querySelector('.stat-label');
+            if (number) number.textContent = t.hero.stat3;
+            if (label) label.textContent = t.hero.stat3Label;
+        }
+    }
+    
+    // Problem Section
+    const problemSection = document.querySelector('.problem-section');
+    if (problemSection && t.problem) {
+        const badge = problemSection.querySelector('.section-badge');
+        const title = problemSection.querySelector('.section-header h2');
+        if (badge) badge.textContent = t.problem.badge;
+        if (title) title.textContent = t.problem.title;
+        
+        const cards = problemSection.querySelectorAll('.problem-card');
+        if (cards[0]) {
+            cards[0].querySelector('h3').textContent = t.problem.card1Title;
+            cards[0].querySelector('p').textContent = t.problem.card1Text;
+        }
+        if (cards[1]) {
+            cards[1].querySelector('h3').textContent = t.problem.card2Title;
+            cards[1].querySelector('p').textContent = t.problem.card2Text;
+        }
+        if (cards[2]) {
+            cards[2].querySelector('h3').textContent = t.problem.card3Title;
+            cards[2].querySelector('p').textContent = t.problem.card3Text;
+        }
+        if (cards[3]) {
+            cards[3].querySelector('h3').textContent = t.problem.card4Title;
+            cards[3].querySelector('p').textContent = t.problem.card4Text;
+        }
+        if (cards[4]) {
+            cards[4].querySelector('h3').textContent = t.problem.card5Title;
+            cards[4].querySelector('p').textContent = t.problem.card5Text;
+        }
+        
+        const ctaBox = problemSection.querySelector('.cta-box');
+        if (ctaBox) {
+            ctaBox.querySelector('h3').textContent = t.problem.ctaTitle;
+            ctaBox.querySelector('p').textContent = t.problem.ctaText;
+            ctaBox.querySelector('.btn').textContent = t.problem.ctaButton;
+        }
+    }
+    
+    // Results Section
+    const resultsSection = document.querySelector('.results-section');
+    if (resultsSection && t.results) {
+        const badge = resultsSection.querySelector('.section-badge');
+        const title = resultsSection.querySelector('.section-header h2');
+        const subtitle = resultsSection.querySelector('.section-header p');
+        if (badge) badge.textContent = t.results.badge;
+        if (title) title.textContent = t.results.title;
+        if (subtitle) subtitle.textContent = t.results.subtitle;
+        
+        const cards = resultsSection.querySelectorAll('.result-card');
+        if (cards[0]) {
+            cards[0].querySelector('h3').textContent = t.results.card1Title;
+            cards[0].querySelector('p').textContent = t.results.card1Text;
+            const badge1 = cards[0].querySelector('.result-badge');
+            if (badge1) badge1.textContent = t.results.card1Badge;
+        }
+        if (cards[1]) {
+            cards[1].querySelector('h3').textContent = t.results.card2Title;
+            cards[1].querySelector('p').textContent = t.results.card2Text;
+        }
+        if (cards[2]) {
+            cards[2].querySelector('h3').textContent = t.results.card3Title;
+            cards[2].querySelector('p').textContent = t.results.card3Text;
+        }
+        if (cards[3]) {
+            cards[3].querySelector('h3').textContent = t.results.card4Title;
+            cards[3].querySelector('p').textContent = t.results.card4Text;
+        }
+        if (cards[4]) {
+            cards[4].querySelector('h3').textContent = t.results.card5Title;
+            cards[4].querySelector('p').textContent = t.results.card5Text;
+        }
+        if (cards[5]) {
+            cards[5].querySelector('h3').textContent = t.results.card6Title;
+            cards[5].querySelector('p').textContent = t.results.card6Text;
+        }
+        if (cards[6]) {
+            cards[6].querySelector('h3').textContent = t.results.card7Title;
+            cards[6].querySelector('p').textContent = t.results.card7Text;
+            const badge7 = cards[6].querySelector('.result-badge');
+            if (badge7) badge7.textContent = t.results.card7Badge;
+        }
+    }
+    
+    // Program Section
+    const programSection = document.querySelector('.program-section');
+    if (programSection && t.program) {
+        const badge = programSection.querySelector('.section-badge');
+        const title = programSection.querySelector('.section-header h2');
+        const subtitle = programSection.querySelector('.section-header p');
+        if (badge) badge.textContent = t.program.badge;
+        if (title) title.textContent = t.program.title;
+        if (subtitle) subtitle.textContent = t.program.subtitle;
+        
+        const steps = programSection.querySelectorAll('.step-card');
+        if (steps[0]) {
+            steps[0].querySelector('h3').textContent = t.program.step1Title;
+            const desc = steps[0].querySelector('.step-description');
+            desc.querySelector('p').textContent = t.program.step1Subtitle;
+            const items = desc.querySelectorAll('li');
+            if (items[0]) items[0].childNodes[1].textContent = ' ' + t.program.step1Item1;
+            if (items[1]) items[1].childNodes[1].textContent = ' ' + t.program.step1Item2;
+            if (items[2]) items[2].childNodes[1].textContent = ' ' + t.program.step1Item3;
+            const result = desc.querySelector('.step-result');
+            if (result && t.program.step1Result) {
+                const resultLabel = currentLang === 'en' ? 'Your outcome:' : 'Результат:';
+                result.innerHTML = '<strong>' + resultLabel + '</strong> ' + t.program.step1Result.replace('Your outcome: ', '').replace('Результат: ', '').replace('Result: ', '');
+            }
+        }
+        if (steps[1]) {
+            steps[1].querySelector('h3').textContent = t.program.step2Title;
+            const desc = steps[1].querySelector('.step-description');
+            desc.querySelector('p').textContent = t.program.step2Subtitle;
+            const items = desc.querySelectorAll('li');
+            if (items[0]) items[0].childNodes[1].textContent = ' ' + t.program.step2Item1;
+            if (items[1]) items[1].childNodes[1].textContent = ' ' + t.program.step2Item2;
+            if (items[2]) items[2].childNodes[1].textContent = ' ' + t.program.step2Item3;
+            const result = desc.querySelector('.step-result');
+            if (result && t.program.step2Result) {
+                const resultLabel = currentLang === 'en' ? 'Your outcome:' : 'Результат:';
+                result.innerHTML = '<strong>' + resultLabel + '</strong> ' + t.program.step2Result.replace('Your outcome: ', '').replace('Результат: ', '').replace('Result: ', '').replace('Outcome: ', '');
+            }
+        }
+        if (steps[2]) {
+            steps[2].querySelector('h3').textContent = t.program.step3Title;
+            const desc = steps[2].querySelector('.step-description');
+            desc.querySelector('p').textContent = t.program.step3Subtitle;
+            const items = desc.querySelectorAll('li');
+            if (items[0]) items[0].childNodes[1].textContent = ' ' + t.program.step3Item1;
+            if (items[1]) items[1].childNodes[1].textContent = ' ' + t.program.step3Item2;
+            if (items[2]) items[2].childNodes[1].textContent = ' ' + t.program.step3Item3;
+            const result = desc.querySelector('.step-result');
+            if (result && t.program.step3Result) {
+                const resultLabel = currentLang === 'en' ? 'Your outcome:' : 'Результат:';
+                result.innerHTML = '<strong>' + resultLabel + '</strong> ' + t.program.step3Result.replace('Your outcome: ', '').replace('Результат: ', '').replace('Result: ', '').replace('Outcome: ', '');
+            }
+        }
+    }
+    
+    // Skills Section
+    const skillsSection = document.querySelector('.skills-section');
+    if (skillsSection && t.skills) {
+        const badge = skillsSection.querySelector('.section-badge');
+        const title = skillsSection.querySelector('.section-header h2');
+        if (badge) badge.textContent = t.skills.badge;
+        if (title) title.textContent = t.skills.title;
+        
+        const skills = skillsSection.querySelectorAll('.skill-card h4');
+        const skillKeys = ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill6', 
+                          'skill7', 'skill8', 'skill9', 'skill10', 'skill11', 'skill12'];
+        skills.forEach((skill, index) => {
+            if (t.skills[skillKeys[index]]) {
+                skill.textContent = t.skills[skillKeys[index]];
+            }
+        });
+    }
+    
+    // Benefits Section
+    const benefitsSection = document.querySelector('.benefits-section');
+    if (benefitsSection && t.benefits) {
+        const badge = benefitsSection.querySelector('.section-badge');
+        const title = benefitsSection.querySelector('.section-header h2');
+        if (badge) badge.textContent = t.benefits.badge;
+        if (title) title.textContent = t.benefits.title;
+        
+        const cards = benefitsSection.querySelectorAll('.benefit-card');
+        if (cards[0]) {
+            cards[0].querySelector('h3').textContent = t.benefits.card1Title;
+            cards[0].querySelector('p').textContent = t.benefits.card1Text;
+            const items = cards[0].querySelectorAll('li');
+            if (items[0]) items[0].textContent = t.benefits.card1Item1;
+            if (items[1]) items[1].textContent = t.benefits.card1Item2;
+            if (items[2]) items[2].textContent = t.benefits.card1Item3;
+            if (items[3]) items[3].textContent = t.benefits.card1Item4;
+        }
+        if (cards[1]) {
+            cards[1].querySelector('h3').textContent = t.benefits.card2Title;
+            cards[1].querySelector('p').textContent = t.benefits.card2Text;
+        }
+        if (cards[2]) {
+            cards[2].querySelector('h3').textContent = t.benefits.card3Title;
+            cards[2].querySelector('p').textContent = t.benefits.card3Text;
+        }
+        if (cards[3]) {
+            cards[3].querySelector('h3').textContent = t.benefits.card4Title;
+            cards[3].querySelector('p').textContent = t.benefits.card4Text;
+        }
+    }
+    
+    // Value Section
+    const valueSection = document.querySelector('.value-section');
+    if (valueSection && t.value) {
+        const badge = valueSection.querySelector('.section-badge');
+        const title = valueSection.querySelector('.value-left h2');
+        const intro = valueSection.querySelector('.value-intro');
+        if (badge) badge.textContent = t.value.badge;
+        if (title) title.textContent = t.value.title;
+        if (intro) intro.textContent = t.value.intro;
+        
+        const items = valueSection.querySelectorAll('.value-item span');
+        if (items[0]) items[0].textContent = t.value.item1;
+        if (items[1]) items[1].textContent = t.value.item2;
+        if (items[2]) items[2].textContent = t.value.item3;
+        if (items[3]) items[3].textContent = t.value.item4;
+        
+        const boxTitle = valueSection.querySelector('.value-box h3');
+        if (boxTitle) boxTitle.textContent = t.value.boxTitle;
+        
+        const points = valueSection.querySelectorAll('.value-point');
+        if (points[0]) {
+            points[0].querySelector('strong').textContent = t.value.point1Title;
+            points[0].querySelector('p').textContent = t.value.point1Text;
+        }
+        if (points[1]) {
+            points[1].querySelector('strong').textContent = t.value.point2Title;
+            points[1].querySelector('p').textContent = t.value.point2Text;
+        }
+        if (points[2]) {
+            points[2].querySelector('strong').textContent = t.value.point3Title;
+            points[2].querySelector('p').textContent = t.value.point3Text;
+        }
+        
+        const result = valueSection.querySelector('.value-result');
+        if (result) result.innerHTML = '<strong>MBA for Kids:</strong> ' + t.value.result.replace('MBA for Kids: ', '');
+    }
+    
+    // Guarantee Section
+    const guaranteeSection = document.querySelector('.guarantee-section');
+    if (guaranteeSection && t.guarantee) {
+        const title = guaranteeSection.querySelector('h2');
+        const text = guaranteeSection.querySelector('.guarantee-text');
+        const content = guaranteeSection.querySelector('.guarantee-content p');
+        const highlight = guaranteeSection.querySelector('.guarantee-highlight');
+        if (title) title.textContent = t.guarantee.title;
+        if (text) text.innerHTML = t.guarantee.text;
+        if (content) content.innerHTML = t.guarantee.content1;
+        if (highlight) highlight.textContent = t.guarantee.highlight;
+    }
+    
+    // Bonuses Section
+    const bonusesSection = document.querySelector('.bonuses-section');
+    if (bonusesSection && t.bonuses) {
+        const badge = bonusesSection.querySelector('.section-badge');
+        const title = bonusesSection.querySelector('.section-header h2');
+        const subtitle = bonusesSection.querySelector('.bonuses-deadline');
+        if (badge) badge.textContent = t.bonuses.badge;
+        if (title) title.textContent = t.bonuses.title;
+        if (subtitle) subtitle.textContent = t.bonuses.subtitle;
+        
+        const cards = bonusesSection.querySelectorAll('.bonus-card');
+        if (cards[0]) {
+            cards[0].querySelector('h3').textContent = t.bonuses.card1Title;
+            cards[0].querySelector('p').textContent = t.bonuses.card1Text;
+        }
+        if (cards[1]) {
+            cards[1].querySelector('h3').textContent = t.bonuses.card2Title;
+            cards[1].querySelector('p').textContent = t.bonuses.card2Text;
+        }
+        if (cards[2]) {
+            cards[2].querySelector('h3').textContent = t.bonuses.card3Title;
+            cards[2].querySelector('p').textContent = t.bonuses.card3Text;
+        }
+        if (cards[3]) {
+            cards[3].querySelector('h3').textContent = t.bonuses.card4Title;
+            cards[3].querySelector('p').textContent = t.bonuses.card4Text;
+        }
+    }
+    
+    // Pricing Section
+    const pricingSection = document.querySelector('.pricing-section');
+    if (pricingSection && t.pricing) {
+        const badge = pricingSection.querySelector('.section-badge');
+        const title = pricingSection.querySelector('.section-header h2');
+        const subtitle = pricingSection.querySelector('.section-header p');
+        if (badge) badge.textContent = t.pricing.badge;
+        if (title) title.textContent = t.pricing.title;
+        if (subtitle) subtitle.textContent = t.pricing.subtitle;
+    }
+    
+    // Pricing Section - Progressive Pricing Alert
+    const pricingAlert = document.querySelector('.pricing-alert');
+    if (pricingAlert && t.pricing) {
+        const alertTitle = pricingAlert.querySelector('.alert-content h3');
+        const alertSubtitle = pricingAlert.querySelector('.alert-subtitle');
+        const alertNote = pricingAlert.querySelector('.alert-note');
+        
+        if (alertTitle) alertTitle.textContent = t.pricing.progressiveTitle;
+        if (alertSubtitle) alertSubtitle.textContent = t.pricing.progressiveSubtitle;
+        if (alertNote) alertNote.innerHTML = t.pricing.alertNote;
+        
+        // Pricing Tiers
+        const tiers = pricingAlert.querySelectorAll('.tier');
+        if (tiers[0]) {
+            tiers[0].querySelector('.tier-spots').textContent = t.pricing.tier1;
+            tiers[0].querySelector('.tier-price').textContent = t.pricing.tier1Price;
+            const status = tiers[0].querySelector('.tier-status');
+            if (status) status.textContent = t.pricing.tier1Status;
+        }
+        if (tiers[1]) {
+            tiers[1].querySelector('.tier-spots').textContent = t.pricing.tier2;
+            tiers[1].querySelector('.tier-price').textContent = t.pricing.tier2Price;
+        }
+        if (tiers[2]) {
+            tiers[2].querySelector('.tier-spots').textContent = t.pricing.tier3;
+            tiers[2].querySelector('.tier-price').textContent = t.pricing.tier3Price;
+        }
+        if (tiers[3]) {
+            tiers[3].querySelector('.tier-spots').textContent = t.pricing.tier4;
+            tiers[3].querySelector('.tier-price').textContent = t.pricing.tier4Price;
+        }
+        if (tiers[4]) {
+            tiers[4].querySelector('.tier-spots').textContent = t.pricing.tier5;
+            tiers[4].querySelector('.tier-price').textContent = t.pricing.tier5Price;
+        }
+    }
+    
+    // Pricing Cards
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    if (pricingCards.length > 0 && t.pricing) {
+        // Monthly card
+        if (pricingCards[0]) {
+            const badge = pricingCards[0].querySelector('.pricing-badge');
+            const title = pricingCards[0].querySelector('h3');
+            const price = pricingCards[0].querySelector('.price-amount');
+            const period = pricingCards[0].querySelector('.price-period');
+            const note = pricingCards[0].querySelector('.price-note');
+            const button = pricingCards[0].querySelector('.btn span');
+            
+            if (badge) badge.textContent = t.pricing.monthlyBadge;
+            if (title) title.textContent = t.pricing.monthlyTitle;
+            if (price) price.textContent = t.pricing.monthlyPrice;
+            if (period) period.textContent = t.pricing.monthlyPeriod;
+            if (note) note.textContent = t.pricing.monthlyNote;
+            if (button) button.textContent = t.pricing.monthlyButton;
+            
+            const features = pricingCards[0].querySelectorAll('.pricing-features li span');
+            if (features[0]) features[0].textContent = t.pricing.monthlyFeature1;
+            if (features[1]) features[1].textContent = t.pricing.monthlyFeature2;
+            if (features[2]) features[2].textContent = t.pricing.monthlyFeature3;
+            if (features[3]) features[3].innerHTML = t.pricing.monthlyFeature4;
+        }
+        
+        // Quarterly card
+        if (pricingCards[1]) {
+            const badge = pricingCards[1].querySelector('.pricing-badge');
+            const title = pricingCards[1].querySelector('h3');
+            const price = pricingCards[1].querySelector('.price-amount');
+            const period = pricingCards[1].querySelector('.price-period');
+            const note = pricingCards[1].querySelector('.price-note');
+            const button = pricingCards[1].querySelector('.btn span');
+            
+            if (badge) badge.textContent = t.pricing.quarterlyBadge;
+            if (title) title.textContent = t.pricing.quarterlyTitle;
+            if (price) price.textContent = t.pricing.quarterlyPrice;
+            if (period) period.textContent = t.pricing.quarterlyPeriod;
+            if (note) note.textContent = t.pricing.quarterlyNote;
+            if (button) button.textContent = t.pricing.quarterlyButton;
+            
+            const features = pricingCards[1].querySelectorAll('.pricing-features li span');
+            if (features[0]) features[0].textContent = t.pricing.quarterlyFeature1;
+            if (features[1]) features[1].textContent = t.pricing.quarterlyFeature2;
+            if (features[2]) features[2].textContent = t.pricing.quarterlyFeature3;
+            if (features[3]) features[3].innerHTML = t.pricing.quarterlyFeature4;
+        }
+    }
+    
+    // Value Breakdown
+    const valueBreakdown = document.querySelector('.value-breakdown-section');
+    if (valueBreakdown && t.pricing) {
+        const title = valueBreakdown.querySelector('.breakdown-title');
+        if (title) title.textContent = t.pricing.valueTitle;
+        
+        const cards = valueBreakdown.querySelectorAll('.breakdown-card');
+        if (cards[0]) {
+            cards[0].querySelector('.breakdown-number').textContent = t.pricing.valueHourly;
+            cards[0].querySelector('.breakdown-label').textContent = t.pricing.valueHourlyLabel;
+            cards[0].querySelector('.breakdown-desc').textContent = t.pricing.valueHourlyDesc;
+        }
+        if (cards[1]) {
+            cards[1].querySelector('.breakdown-number').textContent = t.pricing.valueROI;
+            cards[1].querySelector('.breakdown-label').textContent = t.pricing.valueROILabel;
+            cards[1].querySelector('.breakdown-desc').textContent = t.pricing.valueROIDesc;
+        }
+        
+        const compare = valueBreakdown.querySelector('.breakdown-comparison p:first-child');
+        if (compare) compare.innerHTML = t.pricing.valueCompare;
+        
+        const comparisonItems = valueBreakdown.querySelectorAll('.comparison-item');
+        if (comparisonItems[0]) {
+            comparisonItems[0].querySelector('.comparison-service').textContent = t.pricing.valueTutoring;
+            comparisonItems[0].querySelector('.comparison-price').textContent = t.pricing.valueTutoringPrice;
+        }
+        if (comparisonItems[1]) {
+            comparisonItems[1].querySelector('.comparison-service').textContent = t.pricing.valueBootcamp;
+            comparisonItems[1].querySelector('.comparison-price').textContent = t.pricing.valueBootcampPrice;
+        }
+        if (comparisonItems[2]) {
+            comparisonItems[2].querySelector('.comparison-service').textContent = t.pricing.valueMBA;
+            comparisonItems[2].querySelector('.comparison-price').textContent = t.pricing.valueMBAPrice;
+        }
+        
+        const compareNote = valueBreakdown.querySelector('.comparison-note');
+        if (compareNote) compareNote.innerHTML = t.pricing.valueNote;
+    }
+    
+    // Benefits List (What Average Student Gets)
+    const benefitsBreakdown = document.querySelector('.breakdown-benefits');
+    if (benefitsBreakdown && t.pricing) {
+        const benefitsTitle = benefitsBreakdown.querySelector('h4');
+        if (benefitsTitle) benefitsTitle.textContent = t.pricing.benefitsTitle;
+        
+        const benefits = benefitsBreakdown.querySelectorAll('.benefit-item');
+        for (let i = 0; i < benefits.length && i < 6; i++) {
+            const div = benefits[i].querySelector('div');
+            const titleKey = 'benefit' + (i+1) + 'Title';
+            const textKey = 'benefit' + (i+1) + 'Text';
+            
+            if (div && t.pricing[titleKey] && t.pricing[textKey]) {
+                div.innerHTML = `<strong>${t.pricing[titleKey]}</strong> — ${t.pricing[textKey]}`;
+            }
+        }
+        
+        const benefitsNote = benefitsBreakdown.querySelector('.benefits-note');
+        if (benefitsNote) benefitsNote.innerHTML = t.pricing.benefitsNote;
+    }
+    
+    // Schedule/Location Section
+    const scheduleLocation = document.querySelector('.schedule-location');
+    if (scheduleLocation && t.schedule) {
+        const locationTitle = scheduleLocation.querySelector('.location-info h4');
+        if (locationTitle) locationTitle.textContent = t.schedule.locationTitle;
+        
+        const locationOptions = scheduleLocation.querySelectorAll('.location-option');
+        if (locationOptions[0]) locationOptions[0].querySelector('div').innerHTML = t.schedule.location1;
+        if (locationOptions[1]) locationOptions[1].querySelector('div').innerHTML = t.schedule.location2;
+        if (locationOptions[2]) locationOptions[2].querySelector('div').innerHTML = t.schedule.locationOnline;
+        
+        const locationNote = scheduleLocation.querySelector('.location-note');
+        if (locationNote) locationNote.textContent = t.schedule.locationNote;
+    }
+    
+    // CTA Section
+    const ctaSection = document.querySelector('.cta-section');
+    if (ctaSection && t.cta) {
+        const badge = ctaSection.querySelector('.cta-badge');
+        const title = ctaSection.querySelector('h2');
+        const subtitle = ctaSection.querySelectorAll('p')[0];
+        if (badge) badge.textContent = t.cta.badge;
+        if (title) title.textContent = t.cta.title;
+        if (subtitle) subtitle.textContent = t.cta.subtitle;
+        
+        const features = ctaSection.querySelectorAll('.cta-feature span');
+        if (features[0]) features[0].textContent = t.cta.feature1;
+        if (features[1]) features[1].textContent = t.cta.feature2;
+        if (features[2]) features[2].textContent = t.cta.feature3;
+        
+        const button = ctaSection.querySelector('.cta-main');
+        if (button) {
+            const buttonText = button.querySelector('span') || button.childNodes[button.childNodes.length - 1];
+            if (buttonText.nodeType === Node.TEXT_NODE) {
+                buttonText.textContent = ' ' + t.cta.button;
+            } else {
+                buttonText.textContent = t.cta.button;
+            }
+        }
+        
+        const contacts = ctaSection.querySelectorAll('.cta-contact p');
+        if (contacts[0]) contacts[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${t.cta.contact1} <strong>+1 929 628 8273</strong>`;
+        if (contacts[1]) contacts[1].innerHTML = `<i class="fas fa-globe"></i> ${t.cta.contact2} <strong>gocoding.tech</strong>`;
+    }
+    
+    // Footer
+    const footer = document.querySelector('.footer');
+    if (footer && t.footer) {
+        const texts = footer.querySelectorAll('.footer-text p');
+        if (texts[0]) texts[0].textContent = t.footer.text1;
+        if (texts[1]) texts[1].textContent = t.footer.text2;
+        
+        const collaboration = footer.querySelector('.footer-collaboration');
+        if (collaboration) {
+            collaboration.innerHTML = `${t.footer.collaboration} <a href="https://gocoding.tech" target="_blank" class="footer-link">GoCoding.tech</a>`;
+        }
+        
+        const copyright = footer.querySelector('.footer-bottom p');
+        if (copyright) copyright.textContent = t.footer.copyright;
+    }
+}
+
+// Update language button states
+function updateLanguageButtons(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+// Initialize language switcher
+document.addEventListener('DOMContentLoaded', function() {
+    // Load initial language
+    loadTranslations(currentLang);
+    
+    // Language switcher buttons
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            if (lang !== currentLang) {
+                loadTranslations(lang);
+                
+                // Add animation
+                document.body.style.opacity = '0.95';
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                }, 200);
+            }
+        });
+    });
+});
+
+// Export for use in other scripts
+window.getCurrentLanguage = () => currentLang;
+window.getTranslation = (key) => {
+    const keys = key.split('.');
+    let value = translations;
+    for (const k of keys) {
+        value = value[k];
+        if (!value) return key;
+    }
+    return value;
+};
