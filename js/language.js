@@ -793,40 +793,92 @@ function applyManualTranslations() {
     }
     
     // Schedule Section
-    const weeklySchedule = document.querySelector('.weekly-schedule-simple');
-    if (weeklySchedule && t.schedule) {
-        const title = weeklySchedule.parentElement.querySelector('h3');
-        const intro = weeklySchedule.parentElement.querySelector('p');
+    const scheduleSection = document.querySelector('.schedule-location');
+    if (scheduleSection && t.schedule) {
+        // Main schedule title and subtitle
+        const title = scheduleSection.querySelector('.schedule-title');
+        const subtitle = scheduleSection.querySelector('.schedule-subtitle');
         if (title) title.textContent = t.schedule.scheduleTitle;
-        if (intro) intro.textContent = t.schedule.scheduleIntro;
+        if (subtitle) subtitle.textContent = t.schedule.scheduleIntro;
         
-        const cards = weeklySchedule.querySelectorAll('.schedule-card');
-        if (cards[0]) {
-            cards[0].querySelector('h4').textContent = t.schedule.liveClass;
-            cards[0].querySelector('.time').textContent = t.schedule.liveClassTime;
-            cards[0].querySelector('.desc').textContent = t.schedule.liveClassDesc;
-        }
-        if (cards[1]) {
-            cards[1].querySelector('h4').textContent = t.schedule.projectWork;
-            cards[1].querySelector('.time').textContent = t.schedule.projectWorkTime;
-            cards[1].querySelector('.desc').textContent = t.schedule.projectWorkDesc;
-        }
-        if (cards[2]) {
-            cards[2].querySelector('h4').textContent = t.schedule.checkIns;
-            cards[2].querySelector('.time').textContent = t.schedule.checkInsTime;
-            cards[2].querySelector('.desc').textContent = t.schedule.checkInsDesc;
+        // Schedule cards
+        const weeklySchedule = scheduleSection.querySelector('.weekly-schedule-simple');
+        if (weeklySchedule) {
+            const cards = weeklySchedule.querySelectorAll('.schedule-card-simple');
+            
+            // Card 1: Live Class
+            if (cards[0]) {
+                const time = cards[0].querySelector('.schedule-card-time');
+                const cardTitle = cards[0].querySelector('.schedule-card-title');
+                const desc = cards[0].querySelector('p');
+                if (time) time.textContent = t.schedule.liveClassTime;
+                if (cardTitle) cardTitle.textContent = t.schedule.liveClass;
+                if (desc) desc.textContent = t.schedule.liveClassDesc;
+            }
+            
+            // Card 2: Project Work
+            if (cards[1]) {
+                const time = cards[1].querySelector('.schedule-card-time');
+                const cardTitle = cards[1].querySelector('.schedule-card-title');
+                const desc = cards[1].querySelector('p');
+                if (time) time.textContent = t.schedule.projectWorkTime;
+                if (cardTitle) cardTitle.textContent = t.schedule.projectWork;
+                if (desc) desc.textContent = t.schedule.projectWorkDesc;
+            }
+            
+            // Card 3: Support/Check-ins
+            if (cards[2]) {
+                const time = cards[2].querySelector('.schedule-card-time');
+                const cardTitle = cards[2].querySelector('.schedule-card-title');
+                const desc = cards[2].querySelector('p');
+                if (time) time.textContent = t.schedule.checkInsTime;
+                if (cardTitle) cardTitle.textContent = t.schedule.checkIns;
+                if (desc) desc.textContent = t.schedule.checkInsDesc;
+            }
         }
         
-        const totalCard = weeklySchedule.querySelector('.schedule-total-card');
-        if (totalCard) {
-            totalCard.querySelector('.total-label').textContent = t.schedule.total;
-            totalCard.querySelector('.total-time').textContent = t.schedule.totalTime;
-            totalCard.querySelector('.total-desc').textContent = t.schedule.totalDesc;
+        // Total time box
+        const totalBox = scheduleSection.querySelector('.schedule-total-box');
+        if (totalBox && t.schedule) {
+            const totalTitle = totalBox.querySelector('h4');
+            const totalDesc = totalBox.querySelector('p');
+            if (totalTitle) totalTitle.innerHTML = `${t.schedule.total}: ${t.schedule.totalTime}`;
+            if (totalDesc) totalDesc.innerHTML = `<strong>${t.schedule.totalDesc}</strong>`;
         }
         
-        const note = weeklySchedule.nextElementSibling;
-        if (note && note.classList.contains('schedule-note')) {
-            note.textContent = t.schedule.parentNote;
+        // Parent note at bottom
+        const noteBottom = scheduleSection.querySelector('.schedule-note-bottom');
+        if (noteBottom) noteBottom.innerHTML = t.schedule.parentNote;
+        
+        // Program Details Grid
+        const detailsGrid = scheduleSection.querySelector('.program-details-grid');
+        if (detailsGrid && t.schedule) {
+            const detailCards = detailsGrid.querySelectorAll('.detail-card');
+            
+            if (detailCards[0]) {
+                detailCards[0].querySelector('h4').textContent = t.schedule.detail1Title;
+                detailCards[0].querySelector('p').textContent = t.schedule.detail1Text;
+            }
+            if (detailCards[1]) {
+                detailCards[1].querySelector('h4').textContent = t.schedule.detail2Title;
+                detailCards[1].querySelector('p').innerHTML = t.schedule.detail2Text;
+            }
+            if (detailCards[2]) {
+                detailCards[2].querySelector('h4').textContent = t.schedule.detail3Title;
+                detailCards[2].querySelector('p').innerHTML = t.schedule.detail3Text;
+            }
+            if (detailCards[3]) {
+                detailCards[3].querySelector('h4').textContent = t.schedule.detail4Title;
+                detailCards[3].querySelector('p').innerHTML = t.schedule.detail4Text;
+            }
+            if (detailCards[4]) {
+                detailCards[4].querySelector('h4').textContent = t.schedule.detail5Title;
+                detailCards[4].querySelector('p').innerHTML = t.schedule.detail5Text;
+            }
+            if (detailCards[5]) {
+                detailCards[5].querySelector('h4').textContent = t.schedule.detail6Title;
+                detailCards[5].querySelector('p').innerHTML = t.schedule.detail6Text;
+            }
         }
     }
     
