@@ -1129,6 +1129,19 @@ p {
     font-style: italic;
 }
 
+.location-note-highlight {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15));
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 0.75rem;
+    border-left: 4px solid #3b82f6;
+    font-size: 1.15rem !important;
+    font-style: normal !important;
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: var(--spacing-sm) !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
 .schedule-title {
     font-size: 2rem;
     font-weight: 800;
@@ -1145,6 +1158,94 @@ p {
     color: #6b7280;
     font-size: 1.1rem;
     margin-bottom: var(--spacing-xl);
+}
+
+/* Simplified Weekly Schedule Cards */
+.weekly-schedule-simple {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.schedule-card-simple {
+    background: linear-gradient(135deg, #ffffff, #f9fafb);
+    border: 2px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-card-simple:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+    border-color: #3b82f6;
+}
+
+.schedule-card-highlight {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05));
+    border: 2px solid #3b82f6;
+}
+
+.schedule-card-icon {
+    font-size: 2.5rem;
+    color: #3b82f6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.schedule-card-time {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1e40af;
+    margin-bottom: var(--spacing-xs);
+}
+
+.schedule-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: var(--spacing-sm);
+}
+
+.schedule-card-simple p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.schedule-total-box {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+    border: 2px solid #10b981;
+    border-radius: 1rem;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.total-icon {
+    font-size: 3rem;
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+.total-content h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e40af;
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.total-content p {
+    margin: 0;
+    color: var(--text-medium);
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .schedule-table {

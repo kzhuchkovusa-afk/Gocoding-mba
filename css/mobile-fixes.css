@@ -2,8 +2,50 @@
    Additional Mobile Optimizations
    =========================== */
 
-/* Fix for result badges on mobile */
+/* Mobile styles for simplified weekly schedule */
 @media (max-width: 768px) {
+    .location-note-highlight {
+        font-size: 1rem !important;
+        padding: var(--spacing-sm);
+        text-align: center;
+    }
+    
+    .weekly-schedule-simple {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .schedule-card-icon {
+        font-size: 2rem;
+    }
+    
+    .schedule-card-time {
+        font-size: 1.5rem;
+    }
+    
+    .schedule-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .schedule-total-box {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+    
+    .total-icon {
+        font-size: 2.5rem;
+    }
+    
+    .total-content h4 {
+        font-size: 1.25rem;
+    }
+    
+    .total-content p {
+        font-size: 0.95rem;
+    }
+
+/* Fix for result badges on mobile */
     .result-badge {
         font-size: 0.65rem;
         padding: 0.4rem 0.75rem;
