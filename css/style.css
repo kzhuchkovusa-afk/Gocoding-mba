@@ -2612,6 +2612,50 @@ p {
     line-height: 1.7;
 }
 
+.bonus-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    margin-top: var(--spacing-sm);
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bonus-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.bonus-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.bonus-toggle[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.bonus-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+}
+
+.bonus-collapse.active {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: var(--spacing-sm);
+}
+
 .secret-bonus {
     background: var(--gradient-secondary);
     color: white;

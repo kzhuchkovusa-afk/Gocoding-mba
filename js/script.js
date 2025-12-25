@@ -447,6 +447,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Bonuses Section Accordion Toggle
+    const bonusToggles = document.querySelectorAll('.bonus-toggle');
+    
+    bonusToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const bonusCard = this.closest('.bonus-card');
+            const collapseContent = bonusCard.querySelector('.bonus-collapse');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle current bonus card
+            if (isExpanded) {
+                this.setAttribute('aria-expanded', 'false');
+                this.innerHTML = 'Learn More <i class="fas fa-chevron-down"></i>';
+                collapseContent.classList.remove('active');
+            } else {
+                this.setAttribute('aria-expanded', 'true');
+                this.innerHTML = 'Show Less <i class="fas fa-chevron-up"></i>';
+                collapseContent.classList.add('active');
+            }
+        });
+    });
+
 });
 
 // ===========================
