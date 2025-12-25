@@ -574,7 +574,7 @@ function applyManualTranslations() {
     }
     
     // Phases Section (9-Month Journey)
-    const phasesSection = document.querySelector('.steps-section');
+    const phasesSection = document.querySelector('.program-section');
     if (phasesSection && t.phases) {
         const badge = phasesSection.querySelector('.section-badge');
         const title = phasesSection.querySelector('.section-header h2');
