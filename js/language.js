@@ -2,7 +2,7 @@
 // Language Switcher
 // ===========================
 
-let currentLang = localStorage.getItem('mba-language') || 'ru';
+let currentLang = localStorage.getItem('mba-language') || 'en';
 let translations = {};
 
 // Load translations
