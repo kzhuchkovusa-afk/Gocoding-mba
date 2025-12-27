@@ -813,9 +813,9 @@ function applyManualTranslations() {
     }
     
     // Schedule Section
-    const scheduleSection = document.querySelector('.schedule-location');
+    const scheduleSection = document.querySelector('.program-schedule');
     if (scheduleSection && t.schedule) {
-        // Main schedule title and subtitle
+        // Main schedule title and subtitle (outside schedule-location)
         const title = scheduleSection.querySelector('.schedule-title');
         const subtitle = scheduleSection.querySelector('.schedule-subtitle');
         if (title) title.textContent = t.schedule.scheduleTitle;
