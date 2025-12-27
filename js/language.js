@@ -2,7 +2,8 @@
 // Language Switcher
 // ===========================
 
-let currentLang = localStorage.getItem('mba-language') || 'en';
+// Default to English (clean URL always shows English)
+let currentLang = 'en';
 let translations = {};
 
 // Load translations
@@ -942,6 +943,29 @@ function updateLanguageButtons(lang) {
 
 // Initialize language switcher
 document.addEventListener('DOMContentLoaded', function() {
+    // Check URL parameter first
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    
+    // Priority: URL parameter > localStorage > default 'en'
+    let initialLang = 'en'; // Default to English
+    if (urlLang && (urlLang === 'en' || urlLang === 'ru')) {
+        initialLang = urlLang;
+        localStorage.setItem('mba-language', urlLang); // Save URL preference
+    } else if (localStorage.getItem('mba-language')) {
+        // Only use localStorage if URL has no lang parameter
+        // This means gocoding-mba.com/ will ALWAYS be English
+        // But gocoding-mba.com/?lang=ru will be Russian
+        if (!window.location.search.includes('lang=')) {
+            initialLang = 'en'; // Force English for clean URL
+            localStorage.setItem('mba-language', 'en'); // Update localStorage
+        } else {
+            initialLang = localStorage.getItem('mba-language');
+        }
+    }
+    
+    currentLang = initialLang;
+    
     // Load initial language
     loadTranslations(currentLang);
     
