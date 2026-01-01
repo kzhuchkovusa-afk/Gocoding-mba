@@ -52,6 +52,62 @@ function applyTranslations() {
 function applyManualTranslations() {
     const t = translations;
     
+    // Pre-Hero Sections
+    if (t.preHero) {
+        // Main Headline
+        const mainHeadline = document.querySelector('.main-headline');
+        const headlineSubtext = document.querySelector('.headline-subtext');
+        if (mainHeadline) mainHeadline.textContent = t.preHero.mainHeadline;
+        if (headlineSubtext) headlineSubtext.textContent = t.preHero.mainSubtext;
+        
+        // Subheadlines
+        const subheadlineItems = document.querySelectorAll('.subheadline-item');
+        if (subheadlineItems[0]) {
+            subheadlineItems[0].innerHTML = '<strong>' + t.preHero.subheadline1.split(' who')[0].replace('If you\'re a parent', '') + '</strong> who' + t.preHero.subheadline1.split(' who')[1];
+        }
+        if (subheadlineItems[1]) {
+            subheadlineItems[1].innerHTML = '<strong>' + t.preHero.subheadline2.split(' of')[0].replace('If you\'re tired', '') + '</strong> of' + t.preHero.subheadline2.split(' of')[1];
+        }
+        if (subheadlineItems[2]) {
+            subheadlineItems[2].innerHTML = '<strong>' + t.preHero.subheadline3.split(' so')[0].replace('And if you\'re ready to invest', '') + '</strong> so' + t.preHero.subheadline3.split(' so')[1];
+        }
+        
+        const subheadlineConclusion = document.querySelector('.subheadline-conclusion');
+        const subheadlineIntro = document.querySelector('.subheadline-intro');
+        if (subheadlineConclusion) subheadlineConclusion.textContent = t.preHero.conclusion;
+        if (subheadlineIntro) subheadlineIntro.textContent = t.preHero.intro;
+        
+        // Story Block
+        const storyHeader = document.querySelector('.story-header span');
+        const storyTitle = document.querySelector('.story-title');
+        const storyParagraphs = document.querySelectorAll('.story-paragraph');
+        const storyListItems = document.querySelectorAll('.story-list li');
+        
+        if (storyHeader) storyHeader.textContent = t.preHero.storyBadge;
+        if (storyTitle) storyTitle.textContent = t.preHero.storyTitle;
+        
+        if (storyParagraphs[0]) storyParagraphs[0].textContent = t.preHero.storyP1;
+        if (storyParagraphs[1]) storyParagraphs[1].textContent = t.preHero.storyP2;
+        if (storyParagraphs[2]) storyParagraphs[2].textContent = t.preHero.storyP3;
+        if (storyParagraphs[3]) storyParagraphs[3].innerHTML = '<strong>' + t.preHero.storyP4 + '</strong>';
+        if (storyParagraphs[4]) storyParagraphs[4].textContent = t.preHero.storyP5;
+        
+        if (storyListItems[0]) storyListItems[0].textContent = t.preHero.storyItem1;
+        if (storyListItems[1]) storyListItems[1].textContent = t.preHero.storyItem2;
+        if (storyListItems[2]) storyListItems[2].textContent = t.preHero.storyItem3;
+        if (storyListItems[3]) storyListItems[3].textContent = t.preHero.storyItem4;
+        
+        const quoteText = document.querySelector('.quote-text');
+        const quoteMain = document.querySelector('.quote-main');
+        const quoteAuthor = document.querySelector('.quote-author');
+        const storyConclusion = document.querySelector('.story-conclusion');
+        
+        if (quoteText) quoteText.textContent = t.preHero.quoteIntro;
+        if (quoteMain) quoteMain.textContent = t.preHero.quoteMain;
+        if (quoteAuthor) quoteAuthor.textContent = t.preHero.quoteAuthor;
+        if (storyConclusion) storyConclusion.textContent = t.preHero.storyConclusion;
+    }
+    
     // Hero Section
     const heroSection = document.querySelector('.hero');
     if (heroSection && t.hero) {

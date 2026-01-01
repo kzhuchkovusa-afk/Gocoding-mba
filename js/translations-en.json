@@ -1,4 +1,28 @@
 {
+  "preHero": {
+    "mainHeadline": "Don't read this if you're okay with your talented child being bored in school surrounded by average peers...",
+    "mainSubtext": "But if you want to give them an elite environment and a portfolio that makes Ivy League admission committees speechless — read every word.",
+    "subheadline1": "If you're a parent who doesn't want your smart child to become just another faceless content consumer, unable to create anything of value...",
+    "subheadline2": "If you're tired of watching school kill your talented 11-14-year-old's curiosity with useless formulas they'll forget in a week...",
+    "subheadline3": "And if you're ready to invest so that by age 15, your child has a real IT project in their portfolio, experience pitching to investors, and business understanding that 99% of adults don't have...",
+    "conclusion": "Then this letter will change the trajectory of their life.",
+    "intro": "My name is Alex. I own three businesses, judge startup competitions, and mentor entrepreneurs. And over the past 2 years, I've realized something important...",
+    "storyBadge": "A Real Story",
+    "storyTitle": "Let me tell you about Daniel.",
+    "storyP1": "At 12, he was a regular middle schooler. Got straight A's. Played Minecraft. Asked his parents to buy him another $20 in-game purchase.",
+    "storyP2": "His mom Kate was desperate. She saw her son's potential but didn't know how to unlock it. Coding classes? Boring after a month. Robotics? Same story.",
+    "storyP3": "Then she discovered MBA for Kids.",
+    "storyP4": "In 9 months, Daniel:",
+    "storyItem1": "Built a pocket money management app (a real working product)",
+    "storyItem2": "Pitched to 6 investors at a competition",
+    "storyItem3": "Earned his first $800 selling subscriptions to classmates",
+    "storyItem4": "Got invited to a pre-incubator program at the local university",
+    "storyP5": "But you know what matters most?",
+    "quoteIntro": "When I asked Kate, \"What changed in Daniel?\" she cried and said:",
+    "quoteMain": "He stopped being a child who asks. He became a person who creates.",
+    "quoteAuthor": "— Kate, Daniel's mother",
+    "storyConclusion": "That's what we do at MBA for Kids."
+  },
   "nav": {
     "program": "Program",
     "results": "Results",
