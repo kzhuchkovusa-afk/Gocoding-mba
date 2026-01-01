@@ -36,6 +36,8 @@
     "subtitle1": "MBA for Kids is a 9-month business and IT program for teens aged 11-14. From idea to working product, investor pitch, and first sales.",
     "subtitle2": "We don't accept kids looking for \"after-school fun\" — only motivated teens ready to seriously build their own business project.",
     "cta": "Get Details",
+    "ctaForm": "Submit Application",
+    "note": "No WhatsApp? Use the application form",
     "stat1": "9",
     "stat1Label": "Months of Learning",
     "stat2": "8",
@@ -369,6 +371,8 @@
     "feature2": "Understand the $3,000 competition",
     "feature3": "Check if your child is ready",
     "button": "Get Details via WhatsApp",
+    "buttonForm": "Submit Application",
+    "note": "No WhatsApp? Use the application form",
     "contact1": "WhatsApp:",
     "contact2": "Website:"
   },
