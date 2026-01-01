@@ -28,14 +28,14 @@
     "results": "Results",
     "benefits": "Why Us",
     "guarantee": "Guarantee",
-    "cta": "Enroll Now"
+    "cta": "Get Details"
   },
   "hero": {
     "badge": "Only 8 Spots Available!",
     "title": "Your child will launch their first <span class='gradient-text'>business project</span> and compete for up to <span class='highlight'>$3,000</span> in funding",
     "subtitle1": "MBA for Kids is a 9-month business and IT program for teens aged 11-14. From idea to working product, investor pitch, and first sales.",
     "subtitle2": "We don't accept kids looking for \"after-school fun\" — only motivated teens ready to seriously build their own business project.",
-    "cta": "Enroll Now",
+    "cta": "Get Details",
     "stat1": "9",
     "stat1Label": "Months of Learning",
     "stat2": "8",
@@ -363,12 +363,12 @@
   },
   "cta": {
     "badge": "Only 8 Spots Left!",
-    "title": "Enroll in MBA for Kids Today",
-    "subtitle": "Want your child to be one of the eight? Register now before spots fill up.",
-    "feature1": "Build a real tech project",
-    "feature2": "Compete for $3,000 in funding",
-    "feature3": "Money-back guarantee",
-    "button": "Enroll via WhatsApp",
+    "title": "Get MBA for Kids Program Details",
+    "subtitle": "Is this right for your child? Get all the details via WhatsApp and decide if this is the right fit.",
+    "feature1": "Learn about the 9-month program",
+    "feature2": "Understand the $3,000 competition",
+    "feature3": "Check if your child is ready",
+    "button": "Get Details via WhatsApp",
     "contact1": "WhatsApp:",
     "contact2": "Website:"
   },
