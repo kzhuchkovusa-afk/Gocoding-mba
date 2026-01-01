@@ -154,12 +154,18 @@
                 <p class="hero-subtitle hero-warning">
                     We don't accept kids looking for "after-school fun" — only motivated teens ready to seriously build their own business project.
                 </p>
+                <p class="hero-anchor-link">
+                    <a href="#program" class="anchor-link">
+                        <i class="fas fa-arrow-down"></i>
+                        Choose the builder's path
+                    </a>
+                </p>
                 <div class="hero-cta">
                     <a href="https://wa.me/19179294626?text=Hello%2C%20send%20me%20details%20about%20MBA%20for%20kids" target="_blank" class="btn btn-primary btn-large">
                         <i class="fab fa-whatsapp"></i>
                         <span data-i18n="hero.cta">Get Details</span>
                     </a>
-                    <button type="button" class="btn btn-secondary btn-large" onclick="window.open('https://forms.kommo.com/1640016', '_blank')">
+                    <button type="button" class="btn btn-secondary btn-large" onclick="openKommoForm()">
                         <i class="fas fa-envelope"></i>
                         <span data-i18n="hero.ctaForm">Submit Application</span>
                     </button>
@@ -1095,7 +1101,7 @@
                             <i class="fab fa-whatsapp"></i>
                             <span data-i18n="cta.button">Get Details via WhatsApp</span>
                         </a>
-                        <button type="button" class="btn btn-secondary btn-large cta-form" onclick="window.open('https://forms.kommo.com/1640016', '_blank')">
+                        <button type="button" class="btn btn-secondary btn-large cta-form" onclick="openKommoForm()">
                             <i class="fas fa-envelope"></i>
                             <span data-i18n="cta.buttonForm">Submit Application</span>
                         </button>
@@ -1153,6 +1159,17 @@
     <script src="js/language.js"></script>
     <script src="js/script.js"></script>
     
+    <!-- Kommo Form Modal -->
+    <div id="kommoFormModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <h3 class="modal-title">Submit Application</h3>
+                <div id="kommoFormContainer"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Kommo CRM Form -->
     <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"1640016",hash:"09007298f5bb7b7686083029481c73ff",locale:"ru"}),a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])}}(window,0,"amo_forms_","params","load","loaded");</script>
     <script id="amoforms_script_1640016" async="async" charset="utf-8" src="https://forms.kommo.com/forms/assets/js/amoforms.js?1767287735"></script>
